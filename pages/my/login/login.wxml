@@ -1,0 +1,12 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">零度天气</view>
+        <view class="page__desc">登陆以更好体验</view>
+    </view>
+    <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title">
+         <button wx:if="{{ !isLogin }}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">同意授权登录</button>
+         <view wx:else>您已授权,无需重新操作</view>
+      </view>
+    </view>
+</view>

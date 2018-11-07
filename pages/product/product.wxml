@@ -1,0 +1,149 @@
+<!-- 商品展示图片 -->
+<view>
+  <swiper
+    indicator-dots="true"
+    autoplay="true" 
+    interval="3000" 
+    circular="true"
+    duration="1000" style="height:{{imageWidth}}px;">
+    <block wx:for="{{info.productImages}}" wx:key=''>
+      <swiper-item>
+        <image src="{{item}}" mode="widthFix" style="width:{{imageWidth}}px;"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 商品简介信息 -->
+<view>
+  <view>
+    <text class="momey_0">¥</text>
+    <text class="momey_1">{{miniPrice}}</text>
+    <text class="momey_2">{{miniPricesName}}</text>
+  </view>
+  <view style='margin-top:-10px;'>
+    <text class="momey_3">价格</text>
+    <text class="momey_4">¥{{info.marketPrice}}</text>
+  </view>
+  <!-- <view wx:if='{{hasCaption}}'> -->
+  <view class="flex-row caption-flex">
+    <!-- <text>无敌海景房,终生优惠坐地起价,实现人生梦想,走向人生巅峰.还等什么,福禄仓无敌商品让你享受奢华生活,无尽的品质等你来发现</text> -->
+    <text class="flex-view-item caption">{{info.name}}</text>
+    <view class="flex-view-item share">
+      <image mode="widthFix" src='../../resources/images/share.png'>分享</image>
+    </view>
+  </view>
+</view>
+<!-- 销量及厂商信息 -->
+<view class="flex-row small-info">
+  <view class="flex-view-item">
+    <text>评论{{info.reviews.length}}条</text>
+  </view>
+  <view class="flex-view-item">
+    <text>月销{{info.monthSales}}笔</text>
+  </view>
+  <view class="flex-view-item brand">
+    <text>{{info.brand.name}}</text>
+  </view>
+</view>
+<view class="hr-none"></view>
+<!-- 营销页面 -->
+<view class="flex-row marketing">
+  <view class="flex-view-item marketing-simple">领卷</view>
+  <view class="flex-view-item marketing-title">领取优惠卷即可满100减50</view>
+  <view class="flex-view-item weui-cell__ft_in-access"></view>
+</view>
+<view class="flex-row marketing">
+  <view class="flex-view-item marketing-simple">促销</view>
+  <view class="flex-view-item marketing-title">购买即可获得50积分</view>
+  <view class="flex-view-item weui-cell__ft_in-access"></view>
+</view>
+<view class="flex-row marketing">
+  <view class="flex-view-item marketing-simple">活动</view>
+  <view class="flex-view-item marketing-title">本商品参加"小程序购买获得双倍积分活动",打开小程序即可立刻参与</view>
+  <view class="flex-view-item weui-cell__ft_in-access"></view>
+</view>
+<view class="hr-none"></view>
+
+
+
+<!-- 商品选择购买Modal -->
+<view class='page__hd skuModal' style='width:{{imageWidth}}px;' wx:if="{{skuModal}}">
+  <!-- 商品图片展示及选择的价格显示 -->
+  <view class='flex-row skuModal-header' style='width:{{imageWidth}}px;'>
+    <view class='flex-view-item skuModal-header-left'>
+      <!-- header左边 商品选择图片预览 -->
+      <image class='flex-view-item skuModal-header-image' mode="widthFix" src='{{info.image}}'></image>
+      <!-- 商品价格显示 -->
+      <view class='flex-view-item skuModal-header-message'>
+        <view class='flex-view-item'>
+          <text class='skuModal-header-message-money'>¥</text>
+          <text class='skuModal-header-message-price'>{{miniPrice}}</text>
+          <text class='skuModal-header-message-category'>{{miniPricesName}}</text>
+        </view>
+        <view class='flex-view-item skuModal-header-message-tips'>
+          <!-- 已选择的规格值 -->
+          <text>请选择规格</text>
+        </view>
+      </view>
+    </view>
+    <!-- header右边 -->
+    <view class='flex-view-item skuModal-header-right'>
+      <!-- 关闭按钮 -->
+      <image class='flex-view-item skuModal-header-message-offImage' bindtap="hideSkuModal" mode="widthFix" src='../../resources/images/off.png'></image>
+    </view>
+  </view>
+  <view class="hr-small" style='width:{{imageWidth-20}}px'></view>
+  <!-- 购买选择 -->
+  <scroll-view scroll-y="true" style="height: 500rpx;">
+    <view wx:if="{{info.specificationItemList}}" wx:for="{{info.specificationItemList}}" class='flex-row sku-specification'>
+      <!-- 所属规格名称 -->
+      <view class='flex-view-item specificationName'>
+        {{item.name}}
+      </view>
+      <radio-group bindchange="radioChange" class="sku-radios">
+        <label class='flex-view-item' wx:for="{{item.entry}}" wx:key="id" wx:if="{{item.isSelected}}">
+          <radio hidden value="{{item.id}}"></radio>
+          <view id="{{item.id}}" class='flex-view-item'>{{item.value}}</view>
+        </label>
+      </radio-group>
+      <view class="hr-small hr-h" style='width:{{imageWidth-20}}px'></view>
+    </view>
+  </scroll-view>
+
+  <view class="flex-row sku_bottom" style='width:{{imageWidth}}px;'>
+    <view class="flex-view-item sku-bottom-view-left" style='background-color: #FEAC01;'>
+      <text>加入购物车</text>
+    </view>
+    <view class="flex-view-item sku-bottom-view-right">
+      <text>立即购买</text>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 底部固定 -->
+<view class="flex-row page__hd bottom-view" style='width:{{imageWidth}}px;'>
+  <view class="flex-view-item bottom_left">
+    <view class="flex-view-item">
+      <image mode="widthFix" src='../../resources/images/brand.png'></image>
+      <text>商家</text>
+    </view>
+    <view class="flex-view-item">
+      <image mode="widthFix" src='../../resources/images/cservice.png'></image>
+      <text>客服</text>
+    </view>
+    <view class="flex-view-item">
+      <image mode="widthFix" src='../../resources/images/collection.png'></image>
+      <text>收藏</text>
+    </view>
+  </view>
+  <view class="flex-view-item bottom_right">
+    <view class="flex-view-item" style='background-color: #FEAC01;'>
+      <text>加入购物车</text>
+    </view>
+    <view class="flex-view-item">
+      <text>立即购买</text>
+    </view>
+  </view>
+</view>

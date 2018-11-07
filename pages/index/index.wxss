@@ -1,0 +1,60 @@
+.ad_1_view {
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.ad_2 {
+  background-color: #F4F4F4;
+}
+.ad_3 {
+  background-color: #F4F4F4;
+}
+.ad_3_view {
+  height: 10px;
+  background-color: #F4F4F4;
+}
+
+.center{
+  margin-left: -0.4em;
+  margin-top: -0.3em;
+  color: #888888;
+  display: flex;
+  justify-content: center;
+}
+.center text{
+  font-size: 26rpx;
+}
+.productMsg_view{
+  background-color: #ffffff;
+}
+.productMsg_name {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 26rpx;
+  color: #888888;
+  display: -webkit-box ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2; 
+}
+.productMsg_money {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 8px;
+  font-size: 18px;
+  color: red;
+  display: -webkit-box ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1;
+}
+.img_item {
+  width: 48%;
+  margin: 1%;
+  display: inline-block;
+  vertical-align: top;
+}

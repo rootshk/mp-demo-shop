@@ -1,0 +1,65 @@
+<!-- 首页轮播广告 -->
+<view>
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" 
+    interval="{{interval}}" 
+    circular="{{circular}}"
+    duration="{{duration}}">
+    <block wx:for="{{imgUrls0}}" wx:key=''>
+      <swiper-item>
+        <image src="{{item.img}}" model="aspectFit" style="width: {{imageWidth}}px; height: {{imageHeight}}px;" bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 导航菜单 -->
+<view class="flex-row" style="display:flex">
+  <block wx:for="{{imgUrls1_0}}" wx:key=''>
+    <view class="flex-view-item ad_1_view" style="width: {{imageWidth/5}}px; height: {{imageWidth/5}}px;">
+      <image src="{{item.img}}" model="aspectFit" style="width: {{imageWidth/5/1.3}}px; height: {{imageWidth/5/1.3}}px;" bindload="imageLoad" />
+      <view class="center">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="flex-row" style="display:flex">
+  <block wx:for="{{imgUrls1_1}}" wx:key=''>
+    <view class="flex-view-item ad_1_view" style="width: {{imageWidth/5}}px; height: {{imageWidth/5}}px;">
+      <image src="{{item.img}}" model="aspectFit" style="width: {{imageWidth/5/1.3}}px; height: {{imageWidth/5/1.3}}px;" bindload="imageLoad" />
+      <view class="center">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 第二个广告位 -->
+<view class='ad_2'>
+  <block wx:for="{{imgUrls2}}" wx:key=''>
+    <image src="{{item.img}}" model="aspectFit" style="width: {{imageWidth/2}}px; height: {{imageHeight/2}}px;" bindload="imageLoad" />
+  </block>
+</view>
+<view style="display:none;">
+  <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.pic}}" bindload="onImageLoad"></image>
+</view>
+<scroll-view class='ad_3' scroll-y="true" style="height:{{scrollH}}px" enable-back-to-top="true" bindscrolltolower="loadImages">
+  <view style="width:100%;">
+    <view class="img_item productMsg_view">
+      <view bindtap="seeProductInfo" wx:for="{{col1}}" wx:key="id" data-pid="{{item.pid}}">
+        <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px"></image>
+        <view class='productMsg_name'>{{item.name}}</view>
+        <view class='productMsg_money'>¥{{item.price}}</view>
+        <view class='ad_3_view'></view>
+      </view>
+    </view>
+    <view class="img_item productMsg_view">
+      <view bindtap="seeProductInfo" wx:for="{{col2}}" wx:key="id" data-pid="{{item.pid}}">
+        <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px"></image>
+        <view class='productMsg_name'>{{item.name}}</view>
+        <view class='productMsg_money'>¥{{item.price}}</view>
+        <view class='ad_3_view'></view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
